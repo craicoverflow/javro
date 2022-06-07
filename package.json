@@ -14,7 +14,7 @@
     "lint": "cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx",
     "package": "rm -rf src/dist && yarn build && electron-builder build --publish never",
     "postinstall": "node -r @babel/register .erb/scripts/CheckNativeDep.js && electron-builder install-app-deps && yarn cross-env NODE_ENV=development webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.babel.js && opencollective-postinstall && yarn-deduplicate yarn.lock",
-    "start": "node -r @babel/register ./.erb/scripts/CheckPortInUse.js && cross-env yarn start:renderer",
+    "start": "webpack serve --config webpack.config.js",
     "start:main": "cross-env NODE_ENV=development electron -r ./.erb/scripts/BabelRegister ./src/main.dev.ts",
     "start:renderer": "cross-env NODE_ENV=development webpack serve --config ./.erb/configs/webpack.config.renderer.dev.babel.js",
     "test": "jest",
@@ -195,9 +195,9 @@
     "@types/history": "4.7.6",
     "@types/jest": "^26.0.15",
     "@types/lodash": "4.14.168",
-    "@types/node": "14.14.10",
-    "@types/react": "^16.9.44",
-    "@types/react-dom": "^16.9.9",
+    "@types/node": "^14.14.10",
+    "@types/react": "^16.14.26",
+    "@types/react-dom": "^16.9.16",
     "@types/react-redux": "7.1.16",
     "@types/react-router-dom": "^5.1.6",
     "@types/react-test-renderer": "^16.9.3",
@@ -210,7 +210,6 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "browserslist-config-erb": "^0.0.1",
     "chalk": "^4.1.0",
     "concurrently": "^5.3.0",
     "core-js": "^3.6.5",
@@ -226,8 +225,9 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "enzyme-to-json": "^3.5.0",
-    "eslint": "^7.5.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
     "eslint-config-erb": "^2.0.0",
     "eslint-config-prettier": "^6.11.0",
@@ -241,6 +241,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.0.8",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
@@ -256,12 +257,13 @@
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.3",
-    "typescript": "^4.0.5",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.3",
     "url-loader": "^4.1.0",
-    "webpack": "^5.5.1",
+    "webpack": "^5.73.0",
     "webpack-bundle-analyzer": "^4.1.0",
-    "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.2",
     "webpack-merge": "^5.4.0",
     "yarn-deduplicate": "^3.1.0"
   },
@@ -298,7 +300,6 @@
   "collective": {
     "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
-  "browserslist": [],
   "prettier": {
     "overrides": [
       {
@@ -321,10 +322,5 @@
     "baseBranches": [
       "next"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

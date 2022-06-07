@@ -11,7 +11,7 @@ import CodeEditor, {
 } from '../code-editor/CodeEditor';
 import getJsonPathFromPosition from '../../services/source-map/get-json-path-from-position';
 import avroPathToJsonPath from '../../services/source-map/avro-path-to-json-path';
-import logo from './javro-white.png';
+// import logo from './javro-white.png';
 import { COLORS } from '../../constants/theme';
 import ErrorFeedback from '../error-feedback/ErrorFeedback';
 
@@ -134,7 +134,11 @@ export default class Editor extends React.Component<
         <Header
           style={{ backgroundColor: COLORS.DARK_BLUE, textAlign: 'center' }}
         >
-          <img src={logo} style={{ height: '3.5rem' }} alt="Javro Logo" />
+          <img
+            src="https://apicurio.ddns.net/studio/assets/apicurio_logo_darkbkg_200px.png"
+            style={{ height: '3.5rem' }}
+            alt="Javro Logo"
+          />
         </Header>
         <Layout>
           <Content style={{ padding: '0 50px' }}>
