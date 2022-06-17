@@ -147,8 +147,8 @@
     ]
   },
   "resolutions": {
-    "@types/react": "17.0.14",
-    "@types/react-dom": "17.0.14"
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -182,8 +182,8 @@
     "@types/jest": "^26.0.15",
     "@types/lodash": "4.14.168",
     "@types/node": "^14.14.10",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.2",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "@types/react-redux": "7.1.24",
     "@types/react-router-dom": "5.1.6",
     "@types/react-test-renderer": "^16.9.3",
@@ -265,8 +265,8 @@
     "lodash": "4.17.21",
     "monaco-editor-webpack-plugin": "7.0.1",
     "path-browserify": "^1.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-monaco-editor": "0.43.0",
     "react-redux": "7.2.7",
     "react-resize-detector": "^7.1.2",
