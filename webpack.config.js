@@ -49,6 +49,7 @@ module.exports = {
       zlib: require.resolve('browserify-zlib'),
       buffer: require.resolve('buffer'),
       path: require.resolve('path-browserify'),
+      assert: require.resolve('assert/'),
     },
   },
   devServer: {

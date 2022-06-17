@@ -55,10 +55,8 @@ export default function CodeEditor(props: Props) {
     selection,
   } = props as Required<Omit<Props, 'selection'>> & Props;
 
-  const [
-    editor,
-    setEditor,
-  ] = useState<monacoEditor.editor.IStandaloneCodeEditor>();
+  const [editor, setEditor] =
+    useState<monacoEditor.editor.IStandaloneCodeEditor>();
 
   useEffect(() => {
     if (editor && selection) {
@@ -89,7 +87,7 @@ export default function CodeEditor(props: Props) {
   const editorDidMount: EditorDidMount = (mountedEditor) => {
     mountedEditor.addCommand(
       // eslint-disable-next-line no-bitwise
-      monacoEditor.KeyMod.CtrlCmd | monacoEditor.KeyCode.KEY_S,
+      monacoEditor.KeyMod.CtrlCmd | monacoEditor.KeyCode.KeyS,
       () => {
         onSave();
       }

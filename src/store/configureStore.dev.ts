@@ -72,10 +72,12 @@ const configureStore = (initialState?: JavroStateType) => {
   const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
+    // eslint-disable-next-line global-require
+    const nextCreateRootReducer = require('../reducers').default;
     module.hot.accept(
       '../reducers',
       // eslint-disable-next-line global-require
-      () => store.replaceReducer(require('../reducers').default)
+      () => store.replaceReducer(nextCreateRootReducer(history))
     );
   }
 
