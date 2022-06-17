@@ -5,7 +5,6 @@
 import path from 'path';
 import webpack from 'webpack';
 import { merge } from 'webpack-merge';
-import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import baseConfig from './webpack.config.base';
 import CheckNodeEnv from '../scripts/CheckNodeEnv';
@@ -33,14 +32,6 @@ export default merge(baseConfig, {
   output: {
     path: path.join(__dirname, '../../'),
     filename: './src/main.prod.js',
-  },
-
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        parallel: true,
-      }),
-    ],
   },
 
   plugins: [

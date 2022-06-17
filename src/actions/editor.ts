@@ -1,6 +1,5 @@
 import { Dispatch } from 'redux';
 import * as jsonSourceMapLib from 'json-source-map';
-import fs from 'fs';
 import { message as antMessage } from 'antd';
 import { avscJsonSample } from 'avsc-json-sample';
 
@@ -125,7 +124,7 @@ export function changeAvroWithDispatch(
       );
     } catch (error) {
       dispatch(changeAvro({ str: strAvro, parsed: null, sourceMap: null }));
-      dispatch(changeAvroIsInError(error.message));
+      dispatch(changeAvroIsInError((error as any).message));
     }
   };
 }
@@ -151,11 +150,9 @@ export function saveAvroWithDispatch(
 ): (dispatch: Dispatch) => void {
   return (dispatch: Dispatch) => {
     try {
-      fs.writeFileSync(path, value);
-      dispatch(saveAvroSuccess());
-      antMessage.success('File is saved');
+      // fs.writeFileSync(path, value);
     } catch (e) {
-      antMessage.error(`Error occurred while saving file: ${e.message}`);
+      console.log(e);
     }
   };
 }
